@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Routes, Route } from 'react-router';
-import { loading } from './common/components/message';
+import { loadingMessage } from './common/components/message';
 
 const AppLayout = React.lazy(() => import('./layout/AppLayout'));
 const HomePage = React.lazy(() => import('./pages/HomePage/HomePage'));
@@ -19,7 +19,9 @@ const PlaylistPage = React.lazy(
 
 function App() {
   return (
-    <Suspense fallback={<div style={{ fontSize: '24px' }}>loading</div>}>
+    <Suspense
+      fallback={<div style={{ fontSize: '24px' }}>{loadingMessage}</div>}
+    >
       <Routes>
         <Route path="/" element={<AppLayout />}>
           <Route index element={<HomePage />} />

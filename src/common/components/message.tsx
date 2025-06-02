@@ -1,1 +1,1 @@
-export const loading = 'Please wait!!';
+export const loadingMessage = 'Please wait!!';
