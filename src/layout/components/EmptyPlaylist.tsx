@@ -19,6 +19,7 @@ const EmptyPlaylist = () => {
       <Typography variant="h2" fontWeight={700}>
         Create your first playlist
       </Typography>
+      <Typography variant="body2">It's easy, we'll help you</Typography>
       <CreatePlaylistButton variant="contained" color="secondary">
         Create playlist
       </CreatePlaylistButton>
