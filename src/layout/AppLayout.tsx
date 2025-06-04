@@ -9,6 +9,7 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 import LibraryHead from './components/LibraryHead';
 import EmptyPlaylist from './components/EmptyPlaylist';
 import Library from './components/Library';
+import NavBar from './components/NavBar';
 
 const Layout = styled('div')({
   display: 'flex',
@@ -51,7 +52,7 @@ const StyledNaviLink = styled(NavLink)(({ theme }) => ({
   '&:hover': {
     color: theme.palette.text.primary,
   },
-  '&:active': {
+  '&.active': {
     color: theme.palette.text.primary,
   },
 }));
@@ -82,7 +83,10 @@ const AppLayout = () => {
           <Library />
         </ContentBox>
       </Sidebar>
-      <Outlet />
+      <ContentBox>
+        <NavBar />
+        <Outlet />
+      </ContentBox>
     </Layout>
   );
 };
