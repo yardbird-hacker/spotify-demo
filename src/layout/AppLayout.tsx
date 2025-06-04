@@ -9,7 +9,7 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 import LibraryHead from './components/LibraryHead';
 import EmptyPlaylist from './components/EmptyPlaylist';
 import Library from './components/Library';
-import NavBar from './components/NavBar';
+//import NavBar from './components/NavBar';
 
 const Layout = styled('div')({
   display: 'flex',
@@ -84,7 +84,9 @@ const AppLayout = () => {
         </ContentBox>
       </Sidebar>
       <ContentBox>
+        {/*
         <NavBar />
+  */}
         <Outlet />
       </ContentBox>
     </Layout>
