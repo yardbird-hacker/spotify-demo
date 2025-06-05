@@ -6,13 +6,14 @@ interface CardProps {
   name: string;
   image: string;
   artistName: string | undefined;
+  imageSize: number;
 }
 
-const Card = ({ image, name, artistName }: CardProps) => {
+const Card = ({ image, name, artistName, imageSize }: CardProps) => {
   return (
     <Box
       sx={{
-        //width: '100%',
+        width: imageSize,
         position: 'relative',
         overflow: 'hidden',
         borderRadius: 2,
@@ -25,7 +26,7 @@ const Card = ({ image, name, artistName }: CardProps) => {
         src={image}
         alt={name}
         style={{
-          //width: 'auto',
+          width: '100%',
           aspectRatio: '1', // ensures square shape
           objectFit: 'cover',
           display: 'block',

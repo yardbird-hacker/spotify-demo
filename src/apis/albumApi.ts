@@ -8,7 +8,7 @@ export const getNewReleases = async (
 ): Promise<GetNewReleasesResponse> => {
   try {
     const response = await axios.get(
-      `https://api.spotify.com/v1/browse/new-releases?limit=6`,
+      `${SPOTIFY_BASE_URL}/v1/browse/new-releases?limit=6`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
