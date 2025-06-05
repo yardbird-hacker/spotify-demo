@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { SPOTIFY_BASE_URL } from '../configs/commonConfig';
 import { GetNewReleasesResponse } from '../models/album';
-import { clientId } from '../configs/authConfig';
 
 export const getNewReleases = async (
   token: string
