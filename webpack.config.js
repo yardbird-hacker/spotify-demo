@@ -82,7 +82,6 @@ module.exports = (env, argv) => {
       }),
       new Dotenv({
         path: isProduction ? '.env.production' : '.env.development',
-        defaults: '.env',
         allowEmptyValues: true,
         systemvars: true,
       }),
