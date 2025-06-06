@@ -13,7 +13,7 @@ const Card = ({ image, name, artistName, imageSize }: CardProps) => {
   return (
     <Box
       sx={{
-        width: imageSize,
+        //width: imageSize,
         position: 'relative',
         overflow: 'hidden',
         borderRadius: 2,

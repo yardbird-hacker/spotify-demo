@@ -23,9 +23,10 @@ const NewReleases = () => {
   const cardsPerRow = Math.floor(
     (window.innerWidth + SPACING_PX) / (MIN_CARD_WIDTH + SPACING_PX)
   );
-  const imageSize = Math.floor(
+  const imageSize = 0; /* Math.floor(
     (window.innerWidth - SPACING_PX * (cardsPerRow - 1)) / cardsPerRow
   );
+  */
 
   const getGridSize = (cards: number) => Math.floor(12 / cards);
 
@@ -37,15 +38,7 @@ const NewReleases = () => {
       {data && data.albums.items.length > 0 ? (
         <Grid container spacing={2}>
           {data.albums.items.map((album) => (
-            <Grid
-              item
-              xs={getGridSize(6)}
-              sm={getGridSize(4)}
-              md={getGridSize(2)}
-              lg={getGridSize(2)}
-              xl={getGridSize(2)}
-              key={album.id}
-            >
+            <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }} key={album.id}>
               <Card
                 image={album.images[0].url}
                 imageSize={imageSize}

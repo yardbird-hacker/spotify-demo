@@ -5,7 +5,7 @@ import { User } from '../models/user';
 
 const getCurrentUserProfile = async (): Promise<User> => {
   try {
-    const response = await axios.get(`${SPOTIFY_BASE_URL}/me`, {
+    const response = await axios.get(`${SPOTIFY_BASE_URL}/v1/me`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access_token')}`,
       },
