@@ -3,13 +3,12 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import React from 'react';
 
 interface CardProps {
-  name: string;
   image: string;
+  name: string;
   artistName: string | undefined;
-  imageSize: number;
 }
 
-const Card = ({ image, name, artistName, imageSize }: CardProps) => {
+const Card = ({ image, name, artistName }: CardProps) => {
   return (
     <Box
       sx={{
@@ -27,14 +26,15 @@ const Card = ({ image, name, artistName, imageSize }: CardProps) => {
         alt={name}
         style={{
           width: '100%',
-          aspectRatio: '1', // ensures square shape
+          aspectRatio: '1/1', // ensures square shape
           objectFit: 'cover',
           display: 'block',
-          borderRadius: '8px',
+          borderRadius: '2',
         }}
       />
 
       {/* Play icon overlay */}
+
       <Box
         className="play-icon"
         sx={{

@@ -16,20 +16,6 @@ const NewReleases = () => {
     return <ErrorMessage errorMessage={error.message} />;
   }
 
-  const SPACING = 2;
-  const SPACING_PX = SPACING * 8;
-  const MIN_CARD_WIDTH = 200;
-
-  const cardsPerRow = Math.floor(
-    (window.innerWidth + SPACING_PX) / (MIN_CARD_WIDTH + SPACING_PX)
-  );
-  const imageSize = 0; /* Math.floor(
-    (window.innerWidth - SPACING_PX * (cardsPerRow - 1)) / cardsPerRow
-  );
-  */
-
-  const getGridSize = (cards: number) => Math.floor(12 / cards);
-
   return (
     <div>
       <Typography variant="h1" paddingTop="8px">
@@ -38,10 +24,9 @@ const NewReleases = () => {
       {data && data.albums.items.length > 0 ? (
         <Grid container spacing={2}>
           {data.albums.items.map((album) => (
-            <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }} key={album.id}>
+            <Grid size={{ xs: 6, sm: 4, md: 2, lg: 2, xl: 2 }} key={album.id}>
               <Card
                 image={album.images[0].url}
-                imageSize={imageSize}
                 name={album.name}
                 artistName={album.artists[0].name}
               />
