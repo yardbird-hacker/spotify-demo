@@ -11,3 +11,12 @@ export default interface Image {
 export default interface Restriction {
   reason?: string;
 }
+export default interface Followers {
+  href: string;
+  total: string;
+}
+
+export default interface Explicit_content {
+  filter_enabled: boolean;
+  filter_locked: boolean;
+}

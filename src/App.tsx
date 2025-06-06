@@ -37,6 +37,7 @@ function App() {
       fallback={<div style={{ fontSize: '24px' }}>{loadingMessage}</div>}
     >
       <Routes>
+        <Route path="/callback" element={<AppLayout />} />
         <Route path="/" element={<AppLayout />}>
           <Route index element={<HomePage />} />
           <Route path="search" element={<SearchPage />} />
