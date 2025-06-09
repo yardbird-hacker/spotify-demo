@@ -21,14 +21,14 @@ const NavBar = () => {
               src={userProfile.images[0]?.url}
               alt="Profile"
               style={{
-                width: 100,
-                height: 100,
+                width: 50,
+                height: 50,
                 borderRadius: '50%',
                 objectFit: 'cover',
               }}
             />
           ) : (
-            <NoPhotographyIcon sx={{ fontSize: 100 }} />
+            <NoPhotographyIcon sx={{ fontSize: 50 }} />
           )}
           <Typography mt={1} fontWeight="bold">
             {userProfile.display_name}

@@ -2,14 +2,11 @@ import React from 'react';
 import { SPOTIFY_BASE_URL } from '../configs/commonConfig';
 import axios from 'axios';
 import { User } from '../models/user';
+import api from '../utils/api';
 
 const getCurrentUserProfile = async (): Promise<User> => {
   try {
-    const response = await axios.get(`${SPOTIFY_BASE_URL}/v1/me`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-      },
-    });
+    const response = await api.get(`/v1/me`);
     return response.data;
   } catch (error) {
     throw new Error('Fail to fetch user profile');
