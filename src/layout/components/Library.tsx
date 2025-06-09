@@ -62,6 +62,8 @@ const Library = () => {
           <div ref={ref}>
             {isFetchingNextPage ? (
               <div style={{ fontSize: '24px' }}>{loadingMessage}</div>
+            ) : !hasNextPage ? (
+              <div style={{ fontSize: '16px', color: '#888' }}>No More!!</div>
             ) : null}
           </div>
         </PlaylistContainer>
