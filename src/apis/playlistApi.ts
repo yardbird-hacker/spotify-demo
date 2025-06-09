@@ -9,6 +9,7 @@ export const getCurrentUserPlaylists = async ({
   offset,
 }: GetCurrentUserPlaylistRequest): Promise<GetCurrentUserPlaylistResponse> => {
   try {
+    console.log(`hit ${limit}, ${offset}`);
     const response = await api.get(`/v1/me/playlists`, {
       params: { limit, offset },
     });
