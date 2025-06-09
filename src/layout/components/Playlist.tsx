@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
-import {
-  IGetCurrentUserPlaylistRequest,
-  IPlaylist,
-  TGetCurrentUserPlaylistResponse,
-} from '../../common/models/playlist';
+import { SimplifiedPlaylistObject } from '../../models/playlist';
 import PlaylistItem from '../../common/components/PlaylistItem';
 import { useNavigate } from 'react-router-dom';
+import NoPhotographyIcon from '@mui/icons-material/NoPhotography';
 
 interface PlaylistProps {
-  playlists: IPlaylist[];
+  playlists: SimplifiedPlaylistObject[];
 }
 
 const Playlist = ({ playlists }: PlaylistProps) => {
