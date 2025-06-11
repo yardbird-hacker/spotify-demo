@@ -94,6 +94,12 @@ const PlaylistDetailPage = () => {
             <AlbumImage
               src={playlist?.images[0].url}
               alt="playlist_cover.jpg"
+              style={{
+                width: '100%',
+                maxWidth: '200px',
+                height: 'auto',
+                maxHeight: '200px',
+              }}
             />
           ) : (
             <DefaultImage>
