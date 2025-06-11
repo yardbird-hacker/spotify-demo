@@ -41,7 +41,7 @@ export const getPlaylistItems = async (
     const response = await api.get(
       `/v1/playlists/${params.playlist_id}/tracks`,
       {
-        params,
+        params: params,
       }
     );
     return response.data;
