@@ -1,10 +1,12 @@
 import {
+  CreatePlaylistRequest,
   GetCurrentUserPlaylistRequest,
   GetCurrentUserPlaylistResponse,
   GetPlaylistItemsRequest,
   GetPlaylistItemsResponse,
   GetPlaylistRequest,
   GetPlaylistResponse,
+  SimplifiedPlaylist,
 } from '../models/playlist';
 import api from '../utils/api';
 
@@ -31,7 +33,9 @@ export const getPlaylist = async (
       params: params,
     });
     return response.data;
-  } catch (error) {}
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const getPlaylistItems = async (
@@ -47,5 +51,24 @@ export const getPlaylistItems = async (
     return response.data;
   } catch (error) {
     throw new Error('Failed to fetch playlist items');
+  }
+};
+
+export const createPlaylist = async (
+  user_id: string,
+  params: CreatePlaylistRequest
+): Promise<SimplifiedPlaylist> => {
+  try {
+    const { name, playlistPublic, collaborative, description } = params;
+
+    const response = await api.post(`/v1/users/${user_id}/playlists`, {
+      name,
+      public: playlistPublic,
+      collaborative,
+      description,
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error('Failed to create playlist');
   }
 };

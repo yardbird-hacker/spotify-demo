@@ -33,7 +33,7 @@ export interface BasePlaylist {
   uri?: string;
 }
 
-export interface SimplifiedPlaylistObject extends BasePlaylist {
+export interface SimplifiedPlaylist extends BasePlaylist {
   tracks?: {
     href?: string;
     total?: number;
@@ -70,4 +70,11 @@ export interface PlaylistTrack {
   } | null;
   is_local?: boolean;
   track: Track | Episode;
+}
+
+export interface CreatePlaylistRequest {
+  name: string;
+  public?: boolean;
+  collaborative?: boolean;
+  description?: string;
 }

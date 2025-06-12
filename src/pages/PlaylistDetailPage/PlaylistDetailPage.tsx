@@ -21,6 +21,8 @@ import { loadingMessage } from '../../common/components/message';
 import { PAGE_LIMIT } from '../../configs/commonConfig';
 import DesktopPlaylistItem from './components/DesktopPlaylistItem';
 import { useInView } from 'react-intersection-observer';
+import LoginButton from '../../common/components/LoginButton';
+import axios from 'axios';
 
 const Head = styled('div')({
   display: 'flex',
@@ -103,9 +105,33 @@ const PlaylistDetailPage = () => {
   if (isPlaylistLoading) {
     return <div style={{ fontSize: '24px' }}>{loadingMessage}</div>;
   }
+
   if (playlistError) {
-    return <ErrorMessage errorMessage={playlistError.message} />;
+    if ((playlistError as any).status === 401) {
+      return (
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          height="100%"
+          flexDirection="column"
+        >
+          <Typography
+            variant="h1"
+            fontWeight={700}
+            mb="100px"
+            color="lightgreen"
+            sx={{ fontSize: '4rem' }}
+          >
+            Please login~!!
+          </Typography>
+          <LoginButton />
+        </Box>
+      );
+    }
+    return <ErrorMessage errorMessage="Failed to load" />;
   }
+
   return (
     <StyledTableContainer>
       <div>
