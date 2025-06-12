@@ -6,11 +6,11 @@ import { ApiResponse } from './apiResponse';
 
 export interface GetNewReleasesResponse {
   albums: {
-    data: ApiResponse<SimplyfiedAlbum>;
+    data: ApiResponse<SimplifiedAlbum>;
   };
 }
 
-export interface SimplyfiedAlbum {
+export interface SimplifiedAlbum {
   album_type: string;
   total_tracks: number;
   available_markets: string;

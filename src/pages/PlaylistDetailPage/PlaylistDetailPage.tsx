@@ -23,6 +23,7 @@ import DesktopPlaylistItem from './components/DesktopPlaylistItem';
 import { useInView } from 'react-intersection-observer';
 import LoginButton from '../../common/components/LoginButton';
 import axios from 'axios';
+import EmptyPlaylistWithSearch from './components/EmptyPlaylistWithSearch';
 
 const Head = styled('div')({
   display: 'flex',
@@ -197,7 +198,7 @@ const PlaylistDetailPage = () => {
           </Grid>
         </PlaylistHeader>
         {playlist?.tracks?.total === 0 ? (
-          <Typography>Search</Typography>
+          <EmptyPlaylistWithSearch />
         ) : (
           <ScrollableTableWrapper>
             <Table
