@@ -33,10 +33,12 @@ const Head = styled('div')({
 });
 
 const PlaylistHeader = styled(Grid)({
-  display: 'flex',
-  alignItems: 'center',
-  background: ' linear-gradient(transparent 0, rgba(0, 0, 0, .5) 100%)',
+  position: 'sticky',
+  top: 0,
+  zIndex: 10, // keep it on top of other content
+  background: 'linear-gradient(transparent 0, rgba(0, 0, 0, .9) 100%)',
   padding: '16px',
+  height: '250px',
 });
 const ImageGrid = styled(Grid)(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
@@ -75,6 +77,18 @@ const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
   msOverflowStyle: 'none', // IE and Edge
   scrollbarWidth: 'none', // Firefox
 }));
+
+const ScrollableTableWrapper = styled('div')({
+  height: 'calc(100vh - 250px)', // subtract header height approx
+  overflowY: 'auto',
+
+  /* Hide scrollbar */
+  '&::-webkit-scrollbar': {
+    display: 'none',
+  },
+  msOverflowStyle: 'none',
+  scrollbarWidth: 'none',
+});
 
 const PlaylistDetailPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -185,38 +199,49 @@ const PlaylistDetailPage = () => {
         {playlist?.tracks?.total === 0 ? (
           <Typography>Search</Typography>
         ) : (
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>#</TableCell>
-                <TableCell>Title</TableCell>
-                <TableCell>Album</TableCell>
-                <TableCell>Data added</TableCell>
-                <TableCell>Duration</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {PlaylistItems?.pages.map((page, pageIndex) =>
-                page.items.map((item, itemIndex) => {
-                  return (
-                    <DesktopPlaylistItem
-                      item={item}
-                      key={itemIndex}
-                      index={pageIndex * PAGE_LIMIT + itemIndex + 1}
-                    />
-                  );
-                })
-              )}
-              <TableRow sx={{ height: '5px' }} ref={ref} />
-              {isFetchingNextPage ? (
-                <div style={{ fontSize: '24px' }}>{loadingMessage}</div>
-              ) : !hasNextPage ? (
-                <div style={{ fontSize: '16px', color: 'lightgreen' }}>
-                  No More!!
-                </div>
-              ) : null}
-            </TableBody>
-          </Table>
+          <ScrollableTableWrapper>
+            <Table
+              stickyHeader
+              sx={{
+                '& .MuiTableCell-head': {
+                  top: '0px', // same as PlaylistHeader height
+                  zIndex: 5, // less than PlaylistHeader (10)
+                  backgroundColor: 'black',
+                },
+              }}
+            >
+              <TableHead>
+                <TableRow>
+                  <TableCell>#</TableCell>
+                  <TableCell>Title</TableCell>
+                  <TableCell>Album</TableCell>
+                  <TableCell>Data added</TableCell>
+                  <TableCell>Duration</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {PlaylistItems?.pages.map((page, pageIndex) =>
+                  page.items.map((item, itemIndex) => {
+                    return (
+                      <DesktopPlaylistItem
+                        item={item}
+                        key={itemIndex}
+                        index={pageIndex * PAGE_LIMIT + itemIndex + 1}
+                      />
+                    );
+                  })
+                )}
+                <TableRow sx={{ height: '5px' }} ref={ref} />
+                {isFetchingNextPage ? (
+                  <div style={{ fontSize: '24px' }}>{loadingMessage}</div>
+                ) : !hasNextPage ? (
+                  <div style={{ fontSize: '16px', color: 'lightgreen' }}>
+                    No More!!
+                  </div>
+                ) : null}
+              </TableBody>
+            </Table>
+          </ScrollableTableWrapper>
         )}
       </div>
     </StyledTableContainer>
